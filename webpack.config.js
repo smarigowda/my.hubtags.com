@@ -1,4 +1,4 @@
-const getConfig = require('hjs-webpack')
+import getConfig from 'hjs-webpack'
 
 module.exports = getConfig({
 	in: 'src/app.js',
