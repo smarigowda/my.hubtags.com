@@ -3,6 +3,7 @@ import NavHelper from '../components/nav-helper'
 
 export default React.createClass({
 	displayName: 'Public...',
+	
 	render () {
 	return (
 		<NavHelper className='container'>
