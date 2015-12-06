@@ -1,6 +1,7 @@
 import app from 'ampersand-app'
 import Router from './router'
 import styles from './styles/main.styl'
+import octicons from 'octicons/octicons/octicons.css'
 import Me from './models/me'
 
 window.app = app;
