@@ -1,2 +1,2 @@
 # my.hubtags.com 
-# frontend masters course, testing yolo
+# frontend masters course
