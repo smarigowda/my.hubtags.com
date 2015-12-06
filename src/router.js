@@ -25,7 +25,8 @@ export default Router.extend({
 		'': 'public', // can be functions
 		'repos': 'repos',
 		'login': 'login',
-		'auth/callback?:query': 'authCallback'
+		'auth/callback?:query': 'authCallback',
+		'logout': 'logout'
 	},
 
 	public() {
@@ -56,7 +57,14 @@ export default Router.extend({
 		}, (err, req, body) => {
 			console.log(body)
 			app.me.token = body.token
+			this.redirectTo('/repos')
 		})
 
+	},
+
+	logout() {
+		window.localStorage.clear();
+		window.location = '/' // resets the token
 	}
+
 })
