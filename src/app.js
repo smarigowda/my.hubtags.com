@@ -1,4 +1,7 @@
 import Router from './router'
+import styles from './styles/main.styl'
+import Repos from './pages/public'
+import Public from './pages/repos'
 
 window.app = {
 	init() {
