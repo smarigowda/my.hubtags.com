@@ -4,6 +4,7 @@ import ReposPage from './pages/repos'
 import React from 'react'
 import Layout from './layout'
 import qs from 'qs'
+import xhr from 'xhr'
 
 export default Router.extend({
 
@@ -42,5 +43,13 @@ export default Router.extend({
 	authCallback(query) {
 		query = qs.parse(query)
 		console.log(query)
+
+		xhr({
+			url: 'https://myhubtags.herokuapp.com/authenticate/' + query.code,
+			json: true
+		}, (err, req, body) => {
+			console.log(body)
+		})
+
 	}
 })
