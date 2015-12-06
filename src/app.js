@@ -11,16 +11,16 @@ app.extend({
 	}
 })
 
-app.on('local', (x) => {
+app.on('local', (payload) => {
 	// console.log(arguments)
 	console.log('local click triggerred...')
-	console.log(x)
+	console.log(payload)
 })
 
-app.on('all', (x) => {
+app.on('all', (enentName, payload) => {
 	// console.log(arguments)
 	console.log('an event triggerred...')
-	console.log('event name: ' + x)
+	console.log('event name: ' + eventName)
 })
 
 app.init();
