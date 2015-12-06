@@ -15,7 +15,7 @@
     "babel-loader": "^5.3.2",
     "css-loader": "^0.18.0",
     "file-loader": "^0.8.4",
-    "hjs-webpack": "^2.13.1",
+    "hjs-webpack": "^2.14.1",
     "json-loader": "^0.5.3",
     "local-links": "^1.4.0",
     "lodash.assign": "^3.2.0",
