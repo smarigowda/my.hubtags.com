@@ -1,13 +1,28 @@
+import app from 'ampersand-app'
 import Router from './router'
 import styles from './styles/main.styl'
-import Repos from './pages/public'
-import Public from './pages/repos'
 
-window.app = {
+window.app = app;
+
+app.extend({
 	init() {
 		this.router = new Router()
 		this.router.history.start()
 	}
-}
+})
 
-window.app.init();
+app.on('local', (x) => {
+	// console.log(arguments)
+	console.log('local click triggerred...')
+	console.log(x)
+})
+
+app.on('all', (x) => {
+	// console.log(arguments)
+	console.log('an event triggerred...')
+	console.log('event name: ' + x)
+})
+
+app.init();
+
+
