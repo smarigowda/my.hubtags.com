@@ -17,7 +17,7 @@ app.on('local', (payload) => {
 	console.log(payload)
 })
 
-app.on('all', (enentName, payload) => {
+app.on('all', (eventName, payload) => {
 	// console.log(arguments)
 	console.log('an event triggerred...')
 	console.log('event name: ' + eventName)

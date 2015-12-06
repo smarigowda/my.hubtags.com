@@ -3,6 +3,7 @@ import PublicPage from './pages/public'
 import ReposPage from './pages/repos'
 import React from 'react'
 import Layout from './layout'
+import qs from 'qs'
 
 export default Router.extend({
 
@@ -19,7 +20,9 @@ export default Router.extend({
 	},
 	routes: {
 		'': 'public', // can be functions
-		'repos': 'repos'
+		'repos': 'repos',
+		'login': 'login',
+		'auth/callback?:query': 'authCallback'
 	},
 	public() {
 		console.log('public page...')
@@ -28,5 +31,16 @@ export default Router.extend({
 	repos() {
 		console.log('repos page...');
 		this.renderPage(<ReposPage/>, { layout: true })
+	},
+	login() {
+		window.location = 'https://github.com/login/oauth/authorize?' + qs.stringify({
+			client_id: 'd50c5d121413402986cc',
+			redirect_uri: window.location.origin + '/auth/callback',
+			scope: 'user,repo'
+		})
+	},
+	authCallback(query) {
+		query = qs.parse(query)
+		console.log(query)
 	}
 })
