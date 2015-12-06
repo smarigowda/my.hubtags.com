@@ -17,7 +17,6 @@ export default Router.extend({
 				</Layout>
 			)
 		}
-
 		React.render(page, document.body)
 	},
 
@@ -57,7 +56,7 @@ export default Router.extend({
 		}, (err, req, body) => {
 			console.log(body)
 			app.me.token = body.token
-			this.redirectTo('/repos')
+			this.redirectTo('/repos') // no history, replace state, wipes from history
 		})
 
 	},
