@@ -5,6 +5,7 @@ import React from 'react'
 import Layout from './layout'
 import qs from 'qs'
 import xhr from 'xhr'
+import app from 'ampersand-app'
 
 export default Router.extend({
 
@@ -19,20 +20,24 @@ export default Router.extend({
 
 		React.render(page, document.body)
 	},
+
 	routes: {
 		'': 'public', // can be functions
 		'repos': 'repos',
 		'login': 'login',
 		'auth/callback?:query': 'authCallback'
 	},
+
 	public() {
 		console.log('public page...')
 		this.renderPage(<PublicPage/>, { layout: false })
 	},
+
 	repos() {
 		console.log('repos page...');
 		this.renderPage(<ReposPage/>, { layout: true })
 	},
+
 	login() {
 		window.location = 'https://github.com/login/oauth/authorize?' + qs.stringify({
 			client_id: 'd50c5d121413402986cc',
@@ -40,6 +45,7 @@ export default Router.extend({
 			scope: 'user,repo'
 		})
 	},
+
 	authCallback(query) {
 		query = qs.parse(query)
 		console.log(query)
@@ -49,6 +55,7 @@ export default Router.extend({
 			json: true
 		}, (err, req, body) => {
 			console.log(body)
+			app.me.token = body.token
 		})
 
 	}
