@@ -6,4 +6,3 @@ export default Collection.extend(githubMixin, {
 	url: 'https://api.github.com/user/repos',
 	model: Repo
 })
-
