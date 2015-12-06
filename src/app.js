@@ -10,6 +10,7 @@ app.extend({
 		this.me = new Me();
 		this.router = new Router()
 		this.router.history.start()
+		this.me.fetchInitialData()
 	}
 })
 

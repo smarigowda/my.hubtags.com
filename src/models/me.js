@@ -20,6 +20,7 @@ export default Model.extend({
 
 	onTokenChange() {
 		window.localStorage.token = this.token
+		this.fetchInitialData()
 	},
 
 	ajaxConfig() {
@@ -27,6 +28,13 @@ export default Model.extend({
 			headers: {
 				Authorization: 'token ' + this.token
 			}
+		}
+	},
+
+	fetchInitialData() {
+		if (this.token) {
+			console.log('fetching initial data')
+			this.fetch()
 		}
 	}
 
