@@ -3,7 +3,7 @@ import React from 'react'
 export default React.createClass({
 	render () {
 		return( <div>
-					<h2>Repos Page</h2>
+					<h1>Repos Page</h1>
 				</div>
 		)
 	}
