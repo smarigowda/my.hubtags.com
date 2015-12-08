@@ -48,7 +48,7 @@
     "deploy": "surge -p public -d hubtags.com",
     "start": "webpack-dev-server",
     "test": "standard",
-    "yolo": "rm /Users/sma54/SAN/github/my.hubtags.com/.git/index.lock & git add --all & git commit -am \"`date`\" && npm version minor && git push origin master --tags && npm publish"
+    "yolo": "git add --all & git commit -am \"`date`\" && npm version minor && git push origin master --tags && npm publish"
   },
   "standard": {
     "ignore": [
