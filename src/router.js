@@ -6,6 +6,7 @@ import Layout from './layout'
 import qs from 'qs'
 import xhr from 'xhr'
 import app from 'ampersand-app'
+import RepoDetail from './pages/repo-detail'
 
 export default Router.extend({
 
@@ -25,7 +26,8 @@ export default Router.extend({
 		'repos': 'repos',
 		'login': 'login',
 		'auth/callback?:query': 'authCallback',
-		'logout': 'logout'
+		'logout': 'logout',
+		'repo/:owner/:name': 'repoDetail'
 	},
 
 	public() {
@@ -64,6 +66,11 @@ export default Router.extend({
 	logout() {
 		window.localStorage.clear();
 		window.location = '/' // resets the token
+	},
+
+	repoDetail(owner, name) {
+		const model = app.me.repos.getByFullName(owner + '/' + name)
+		this.renderPage(<RepoDetail repo={model}/>)
 	}
 
 })

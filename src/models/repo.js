@@ -1,5 +1,6 @@
 import Model from 'ampersand-model'
 
+// this model is used inside repo-collection.js
 export default Model.extend({
 	props: {
 		id: 'number',
@@ -11,7 +12,7 @@ export default Model.extend({
 		appUrl: {
 			deps: ['full_name'],
 			fn() {
-				return '/' + this.full_name
+				return 'repo/' + this.full_name
 			}
 		}
 	}
