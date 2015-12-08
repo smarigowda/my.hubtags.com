@@ -16,8 +16,8 @@ export default Collection.extend(githubMixin, {
 		let model = this.findWhere({full_name: fullName})
 			if (!model) {
 				model = new Repo({full_name: fullName})
-			}
 
+			}
 		model.fetch();
 		return model
 	}
