@@ -4,7 +4,7 @@ import ampersandMixin from 'ampersand-react-mixin'
 export default React.createClass({
 	mixins: [ampersandMixin],
 	render() {
-		const {repos} = this.props
+		const {repos} = this.props // repo collection
 		return(	<div>
 					<h1>Repos Page</h1>
 					<ul>

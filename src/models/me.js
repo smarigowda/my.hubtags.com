@@ -32,8 +32,8 @@ export default Model.extend(githubMixin, {
 	fetchInitialData() {
 		if (this.token) {
 			console.log('fetching initial data')
-			this.fetch()
-			this.repos.fetch()
+			this.fetch() // fetches user
+			this.repos.fetch() // fetched repo collection
 		}
 	}
 
