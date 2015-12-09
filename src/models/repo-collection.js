@@ -1,5 +1,5 @@
 import Collection from 'ampersand-rest-collection'
-import Repo from './repo'
+import Repo from './repo-model'
 import githubMixin from '../helpers/github-mixin'
 
 export default Collection.extend(githubMixin, {
