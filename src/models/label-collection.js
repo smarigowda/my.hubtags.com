@@ -1,9 +1,9 @@
 import Collection from 'ampersand-rest-collection'
 import Label from './label'
-
-export default Collection.extend({
+import githubMixin from '../helpers/github-mixin'
+export default Collection.extend(githubMixin, {
 	url() {
-		return this.parent.url()
+		return this.parent.url() + '/labels'
 	},
 
 	model: Label
