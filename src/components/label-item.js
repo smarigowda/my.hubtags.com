@@ -5,10 +5,10 @@ export default React.createClass({
 		const { label } = this.props
 		// return <li><h5>{label.name}</h5></li>
 
-		let content;
+		let content
 
 		// editing
-		if() {
+		if(label.editing) {
 			content = (
 				<form className='label'>
 				  <span className='label-color avatar avatar-small avatar-rounded'>&nbsp;</span>
@@ -21,7 +21,7 @@ export default React.createClass({
 		} else {
 			content = (
 				<div className='label'>
-				  <span className='label-color' style={{backgroundColor: cssColor}}>&nbsp;</span>
+				  <span className='label-color'>&nbsp;</span>
 				  <span></span>
 				  <span className='octicon octicon-pencil'></span>
 				  <span className='octicon octicon-x'></span>
