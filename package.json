@@ -45,7 +45,7 @@
   "private": false,
   "scripts": {
     "build": "webpack",
-    "deploy": "surge -p public -d hubtags.com",
+    "deploy": "surge -p public -d santosharakere.surge.sh",
     "start": "webpack-dev-server",
     "test": "standard",
     "yolo": "git add --all & git commit -am \"`date`\" & npm version minor & git push origin master --tags & npm publish"

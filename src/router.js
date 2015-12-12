@@ -7,6 +7,8 @@ import qs from 'qs'
 import xhr from 'xhr'
 import app from 'ampersand-app'
 import RepoDetail from './pages/repo-detail'
+import MessagePage from './pages/message'
+import config from './config'
 
 
 function requiresAuth(handlerName) {
@@ -39,7 +41,8 @@ export default Router.extend({
 		'login': 'login',
 		'auth/callback?:query': 'authCallback',
 		'logout': 'logout',
-		'repo/:owner/:name': requiresAuth('repoDetail')
+		'repo/:owner/:name': requiresAuth('repoDetail'),
+		'*nf': 'notfound'
 	},
 
 	public() {
@@ -54,7 +57,7 @@ export default Router.extend({
 
 	login() {
 		window.location = 'https://github.com/login/oauth/authorize?' + qs.stringify({
-			client_id: 'd50c5d121413402986cc',
+			client_id: config.clientId,
 			redirect_uri: window.location.origin + '/auth/callback',
 			scope: 'user,repo'
 		})
@@ -65,13 +68,16 @@ export default Router.extend({
 		console.log(query)
 
 		xhr({
-			url: 'https://myhubtags.herokuapp.com/authenticate/' + query.code,
+			url: `${config.authUrl}/${query.code}`,
 			json: true
 		}, (err, req, body) => {
 			console.log(body)
 			app.me.token = body.token
 			this.redirectTo('/repos') // no history, replace state, wipes from history
 		})
+
+		this.renderPage(<MessagePage title='Fetching your data...'/>)
+
 
 	},
 
@@ -83,6 +89,10 @@ export default Router.extend({
 	repoDetail(owner, name) {
 		const model = app.me.repos.getByFullName(owner + '/' + name)
 		this.renderPage(<RepoDetail repo={model} labels={model.labels}/>)
+	},
+
+	notfound() {
+		this.renderPage(<MessagePage title='Not Found' body='sorry nothing here...'/>)
 	}
 
 })
