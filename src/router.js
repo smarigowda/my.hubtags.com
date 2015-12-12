@@ -8,6 +8,17 @@ import xhr from 'xhr'
 import app from 'ampersand-app'
 import RepoDetail from './pages/repo-detail'
 
+
+function requiresAuth(handlerName) {
+	return function() {
+		if(app.me.token) {
+			this[handlerName].apply(this, arguments)
+		} else {
+			this.redirectTo('/')
+		}
+	}
+}
+
 export default Router.extend({
 
 	renderPage(page, opts = { layout: true }) {
@@ -21,13 +32,14 @@ export default Router.extend({
 		React.render(page, document.body)
 	},
 
+	// routes definition, functions run during import, which is when we require this file
 	routes: {
 		'': 'public', // can be functions
-		'repos': 'repos',
+		'repos': requiresAuth('repos'),
 		'login': 'login',
 		'auth/callback?:query': 'authCallback',
 		'logout': 'logout',
-		'repo/:owner/:name': 'repoDetail'
+		'repo/:owner/:name': requiresAuth('repoDetail')
 	},
 
 	public() {

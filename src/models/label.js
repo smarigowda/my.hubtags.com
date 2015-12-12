@@ -14,12 +14,22 @@ export default Model.extend(githubMixin, {
 		editing: {
 			type: 'boolean',
 			default: false
+		},
+		saved: {
+			type: 'boolean',
+			default: true
 		}
 	},
 
+	isNew() {
+		return !this.saved
+	},
+
 	update(attributes) {
-		const oldAttributes = this.attributes
-		debugger
+		// const oldAttributes = this.attributes
+		const oldAttributes = this.getAttributes({props: true, session: false})
+		
+		// debugger
 		
 		xhr({
 			url: this.url(),
