@@ -5,6 +5,18 @@ export default React.createClass({
 
 	mixins: [ampersandMixin],
 
+	getInitialState() {
+		const { name, color } = this.props.label
+		return { name, color }
+	},
+
+	// case for component level state
+	onNameChange(event) {
+		this.setState({
+			name: event.target.value
+		})
+	},
+
 	onDeleteClick(event) {
 		event.preventDefault()
 		this.props.label.destroy({wait: true})
@@ -35,7 +47,7 @@ export default React.createClass({
 			content = (
 				<form className='label'>
 				  <span className='label-color avatar avatar-small avatar-rounded'>&nbsp;</span>
-				  <input name='name'/>
+				  <input name='name' value={this.state.name} onChange={this.onNameChange}/>
 				  <input name='color'/>
 				  <button type='submit' className='button button-small'>Save</button>
 				  <button type='button' onClick={this.onCancelClick} className='button button-small button-unstyled'>cancel</button>
