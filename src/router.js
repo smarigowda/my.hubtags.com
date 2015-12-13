@@ -16,7 +16,7 @@ function requiresAuth(handlerName) {
 		if(app.me.token) {
 			// this.handlerName.apply(this, arguments) // does not work
 			// debugger
-			console.log(arguments)
+			// console.log(arguments)
 			// console.dir()
 			this[handlerName].apply(this, arguments) // works
 			// handlerName(arguments) // does not work
