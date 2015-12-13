@@ -1,7 +1,7 @@
 const config = {
 	'localhost': {
-		authUrl: 'https://myhubtags.herokuapp.com/authenticate',
-		clientId: 'd50c5d121413402986cc'
+		authUrl: 'https://devhubtags.herokuapp.com/authenticate',
+		clientId: 'd6f4ca7adb9590910afa'
 	},
 
 	'santosharakere.surge.sh': {
