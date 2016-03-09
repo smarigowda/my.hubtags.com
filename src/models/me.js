@@ -36,5 +36,4 @@ export default Model.extend(githubMixin, {
 			this.repos.fetch() // fetched repo collection
 		}
 	}
-
 })

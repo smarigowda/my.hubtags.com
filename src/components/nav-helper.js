@@ -8,6 +8,7 @@ export default React.createClass({
 	onClick ( event ) {
 		const pathname = localLinks.getLocalPathname(event)
 		if ( pathname ) {
+			debugger
 			event.preventDefault()
 			// navigate internally
 			app.trigger('local', { some: 'data' })

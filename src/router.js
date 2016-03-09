@@ -41,7 +41,7 @@ export default Router.extend({
 
 	// routes definition, functions run during import, which is when we require this file
 	routes: {
-		'': 'public', // can be functions
+		'': 'public', // can be function
 		'repos': requiresAuth('repos'),
 		'login': 'login',
 		'auth/callback?:query': 'authCallback',
@@ -57,6 +57,7 @@ export default Router.extend({
 
 	repos() {
 		console.log('repos page...');
+		debugger
 		this.renderPage(<ReposPage repos={app.me.repos}/>, { layout: true })
 	},
 
